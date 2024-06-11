@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_close_window()</l>
+<l>read_image (Image ,'E:/机器视觉/data/crossShape.jpg')</l>
+<c></c>
+<l>dev_open_window_fit_image(Image, 0, 0, -1, -1, WindowHandle)</l>
+<l>dev_set_color('white')</l>
+<l>rgb1_to_gray(Image, GrayImage)</l>
+<l>gen_rectangle1(Rectangle,100,127,325,490)</l>
+<l>reduce_domain(GrayImage, Rectangle, ROI)</l>
+<l>gen_image_proto(ROI, ImageCleared, 0)</l>
+<l>threshold(ROI,Region,50,255)</l>
+<l>connection(Region, ConnectedRegions)</l>
+<l>dev_set_color('yellow')</l>
+<l>select_shape(ConnectedRegions, SelectedRegions, 'area', 'and', 1000, 99999)</l>
+<l>dev_clear_window()</l>
+<l>dev_display(SelectedRegions)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

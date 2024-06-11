@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<c>**read_image (C, 'E:/机器视觉/data/C_dilation.png')</c>
+<l>read_image (C, 'E:/机器视觉/data/C.png')</l>
+<c></c>
+<l>rgb1_to_gray(C,GrayImage)</l>
+<l>gen_rectangle1(Rectangle,259,87,957,909)</l>
+<l>reduce_domain(GrayImage,Rectangle,ImageReduced)</l>
+<l>threshold(ImageReduced,Light,85,255)</l>
+<l>gen_circle(StructElement,6,6,7)</l>
+<l>opening(Light,StructElement,Large)</l>
+<l>dev_clear_window()</l>
+<l>dev_display(Large)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

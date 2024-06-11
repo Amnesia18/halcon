@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_clear_window()</l>
+<l>read_image (Garlic2, 'E:/机器视觉/data/garlic2.jpg')</l>
+<l>get_image_size(Garlic2,Width,Height)</l>
+<l>dev_open_window(0,0,Width/2,Height/2,'black',WindowHandle)</l>
+<l>rgb1_to_gray(Garlic2,GrayImage)</l>
+<l>threshold(GrayImage,Region,100,255)</l>
+<l>connection(Region,ConnectedRegions)</l>
+<l>select_shape(ConnectedRegions,selectRegions,'area','and',50000,200000)</l>
+<l>smallest_rectangle2(selectRegions,Row1,Column1,Phi,Length1,Length2) </l>
+<c>**计算selectRegions中的最小旋转矩形，获取矩形的中心位置(Row1, Column1)，旋转角度Phi，以及长和宽(Length1, Length2)</c>
+<l>gen_rectangle2_contour_xld(Rectangle1,Row1,Column1,Phi,Length1,Length2)</l>
+<c>**基于上一步计算的参数生成旋转矩形的轮廓，存储在Rectangle1变量中</c>
+<l>dev_set_window(WindowHandle)</l>
+<l>dev_set_draw('margin')</l>
+<l>dev_set_line_width(3)</l>
+<l>dev_display(Garlic2)</l>
+<l>dev_display(Rectangle1)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

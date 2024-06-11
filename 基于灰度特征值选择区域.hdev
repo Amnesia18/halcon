@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_clear_window()</l>
+<l>read_image (Village, 'E:/机器视觉/data/village.jpg')</l>
+<l>get_image_size(Village,Width,Height)</l>
+<l>dev_open_window(0,0,Width,Height,'white',WindowID)</l>
+<l>rgb1_to_gray(Village,GrayImage)</l>
+<l>median_image(GrayImage,ImageMedian,'circle',2,'mirrored')</l>
+<l>threshold(ImageMedian,BrightRegion,180,255)</l>
+<l>opening_circle(BrightRegion,RegionClosing,6.5)</l>
+<l>connection(RegionClosing,BrightRestConnection)</l>
+<l>select_shape(BrightRestConnection,SelectedRegions1,'area','and',5000,99999)</l>
+<l>intensity(SelectedRegions1,ImageMedian,Mean,Deviation)</l>
+<l>select_gray(SelectedRegions1,ImageMedian,SelectedRegions,'deviation','and',4,10)</l>
+<l>dev_clear_window()</l>
+<c></c>
+<l>dev_display(GrayImage)</l>
+<l>dev_display(SelectedRegions)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

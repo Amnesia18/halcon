@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_clear_window()</l>
+<l>read_image (Board, 'E:/机器视觉/data/board.jpg')</l>
+<l>rgb1_to_gray(Board,GrayImage)</l>
+<l>get_image_size(GrayImage,Width,Height)</l>
+<l>dev_open_window(0,0,Width/4,Height/4,'black',WindowID)</l>
+<l>dev_set_line_width(5)</l>
+<l>dev_open_window(0,512,320,320,'black',WindowID1)</l>
+<l>dev_open_window(512,512,320,320,'black',WindowID2)</l>
+<l>gen_rectangle1(Rectangle1,200,10,380,190)</l>
+<l>gen_rectangle1(Rectangle2,580,650,730,800)</l>
+<l>gen_cooc_matrix(Rectangle1,GrayImage,Matrix1,6,0)</l>
+<l>gen_cooc_matrix(Rectangle2,GrayImage,Matrix2,6,0)</l>
+<l>cooc_feature_matrix(Matrix1,Energy1,Correlation1,Homogeneity1,Contrast1)</l>
+<l>cooc_feature_matrix(Matrix2,Energy2,Correlation2,Homogeneity2,Contrast2)</l>
+<l>cooc_feature_image(Rectangle2,GrayImage,6,0,Energy3,Correlation3,Homogeneity3,Contrast3)</l>
+<l>dev_set_window(WindowID)</l>
+<l>dev_set_draw('margin')</l>
+<l>dev_display(GrayImage)</l>
+<l>dev_display(Rectangle1)</l>
+<l>dev_set_color('yellow')</l>
+<l>dev_display (Rectangle2)</l>
+<l>dev_set_window(WindowID1)</l>
+<l>dev_display(Matrix1)</l>
+<c>*以字符串的形式，分别在两个矩阵的对应窗口中显示灰度特征值的计算结果</c>
+<l>String:=['Energy:','correlation:','Homogeneity:','Contrast:']</l>
+<l>dev_set_color('red')</l>
+<l>disp_message (WindowID1, String$'-14s'+ [Energy1,Correlation1,Homogeneity1,Contrast1]$'6.3f','window',12,12,'white', 'false')</l>
+<l>dev_set_window (WindowID2)</l>
+<l>dev_display(Matrix2)</l>
+<l>dev_set_color('yellow')</l>
+<l>String:=['Energy:','correlation:','Homogeneity:','Contrast:']</l>
+<l>disp_message (WindowID2, String$'-14s'+ [Energy1,Correlation1,Homogeneity1,Contrast1]$'6.3f','window',12,12,'white', 'false')</l>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

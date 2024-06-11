@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Defocuscomponnet, 'E:/机器视觉/data/defocusComponnet.jpg')</l>
+<l>shock_filter(Defocuscomponnet,SharpenedImage,0.5,20,'canny',2.5)</l>
+<l>dev_display(SharpenedImage)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

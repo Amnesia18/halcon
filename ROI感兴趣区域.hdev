@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_close_window()</l>
+<l>read_image (Image_display, 'C:/Users/Amnesia/Desktop/display.jpg')</l>
+<l>get_image_size(Image_display, imageWidth, imageHeight)</l>
+<l>dev_open_window(0,0,imageWidth,imageHeight,'black',windowHandle)</l>
+<l>dev_display(Image_display)</l>
+<l>gen_rectangle1 (ROI_0,52,46,456,574)</l>
+<l>reduce_domain (Image_display,ROI_0,reducedImage)</l>
+<l>dev_open_window(0,400,imageWidth,imageHeight,'black',windowHandle)</l>
+<l>dev_display(reducedImage)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

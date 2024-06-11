@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Shapes, 'E:/机器视觉/data/shapes.jpg')</l>
+<l>rgb1_to_gray(Shapes,GrayImage)</l>
+<l>auto_threshold(GrayImage,Regions,8.0)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

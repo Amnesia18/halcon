@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_close_window()</l>
+<l>read_image (Logs, 'E:/机器视觉/data/圆点.png')</l>
+<c></c>
+<l>get_image_size(Logs,Width,Height)</l>
+<l>rgb1_to_gray(Logs, GrayImage)</l>
+<l>threshold(GrayImage, Bright, 60, 255)</l>
+<l>opening_rectangle1(Bright,Cut,1,7)</l>
+<l>connection(Cut, ConnectedRegions)</l>
+<l>select_shape(ConnectedRegions, smallRegions, 'area', 'and', 100, 600)</l>
+<l>select_shape(ConnectedRegions,largeRegions,'area','and', 600, 1000000)</l>
+<l>erosion_circle(largeRegions,erisionedLargeRegions,6.5)</l>
+<l>connection(erisionedLargeRegions, ConnectedRegions2)</l>
+<l>select_shape(ConnectedRegions2, SelectedRegions3, 'area', 'and', 50, 200000)</l>
+<l>concat_obj(smallRegions, SelectedRegions3, ObjectsConcat)</l>
+<l>count_obj(ObjectsConcat,number3)</l>
+<l>dev_open_window(0, 0, Width, Height, 'black', WindowHandle)</l>
+<l>dev_display(ObjectsConcat)</l>
+<l>set_display_font(WindowHandle, 18, 'mono', 'true', 'true')</l>
+<l>disp_message(WindowHandle, 'Number of logs : '+ number3, 'image', 30, 50,'blue', 'true')</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_close_window ()</l>
+<l>read_image (Creamlabel, 'E:/机器视觉/data/creamlabel.jpg')</l>
+<c></c>
+<l>dev_open_window_fit_image (Creamlabel, 0, 0, -1, -1, WindowHandle)</l>
+<l>create_local_deformable_model (Creamlabel, 'auto', rad(-15), rad(30), 'auto', 1, 1, 'auto', 1, 1, 'auto', 'none', 'use_polarity', [40,60], 'auto', [], [], ModelID)</l>
+<l>get_deformable_model_contours (ModelContours, ModelID, 1)</l>
+<l>area_center (Creamlabel, Area, Row, Column)</l>
+<l>hom_mat2d_identity (HomMat2DIdentity)</l>
+<l>hom_mat2d_translate (HomMat2DIdentity, Row, Column, HomMat2DTranslate)</l>
+<l>affine_trans_contour_xld (ModelContours, ContoursAffinTrans, HomMat2DTranslate)</l>
+<l>dev_set_line_width (2)</l>
+<l>dev_display (Creamlabel)</l>
+<l>dev_display (ContoursAffinTrans)</l>
+<l>stop ()</l>
+<l>read_image (DeformedImage, 'data/cream')</l>
+<l>dev_resize_window_fit_image (DeformedImage, 0, 0, -1, -1)</l>
+<l>dev_display (DeformedImage)</l>
+<l>find_local_deformable_model (DeformedImage, ImageRectified, VectorField, DeformedContours, ModelID, rad(-14), rad(28), 0.9, 1, 0.9, 1, 0.78, 0, 0, 0, 0.7, ['image_rectified','vector_field','deformed_contours'], ['deformation_smoothness','expand_border','subpixel'], [18,0,0], Score, Row, Column)</l>
+<l>dev_display (DeformedImage)</l>
+<l>dev_set_line_width (2)</l>
+<l>dev_set_color ('red')</l>
+<l>dev_display (DeformedContours)</l>
+<l>stop()</l>
+<l>clear_deformable_model (ModelID)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

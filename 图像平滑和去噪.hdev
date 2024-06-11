@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Marker, 'E:/机器视觉/data/marker.jpg')</l>
+<c>**mean_image(Marker,ImageMean,9,9)</c>
+<c>**dev_display(ImageMean)</c>
+<c></c>
+<c>**median_image(Marker,ImageMedian,'circle',3,'continued')</c>
+<c>**dev_display(ImageMedian)</c>
+<c></c>
+<l>gauss_filter(Marker,ImageGauss,5)</l>
+<l>dev_display(ImageGauss)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

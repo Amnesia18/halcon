@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_close_window()</l>
+<l>read_image (Crossshape, 'E:/机器视觉/data/crossShape.jpg')</l>
+<l>get_image_size(Crossshape,Width,Height)</l>
+<l>dev_open_window(0,0,Width,Height,'black',WIndowID)</l>
+<l>rgb1_to_gray(Crossshape, GrayImage)</l>
+<l>gen_rectangle1(Rectangle,100,127,325,490)</l>
+<l>reduce_domain(GrayImage,Rectangle,ROI)</l>
+<l>threshold(ROI,Regions,50,255)</l>
+<l>connection(Regions,ConnectedRegions)</l>
+<l>select_shape_std(ConnectedRegions, SelectedRegions, 'max_area', 70)</l>
+<l>dev_set_draw('fill')</l>
+<l>inner_circle(SelectedRegions, Row, Column, Radius)</l>
+<l>gen_circle(Circle, Row, Column, Radius)</l>
+<l>dev_set_draw('margin')</l>
+<l>dev_set_line_width(3)</l>
+<l>dev_display(Crossshape)</l>
+<l>dev_display(Circle)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

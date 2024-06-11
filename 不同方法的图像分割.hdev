@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image, 'E:/机器视觉/data/图片1.png')</l>
+<c>**基于直方图</c>
+<l>rgb1_to_gray(Image,GrayImage)</l>
+<l>auto_threshold(GrayImage,Regions,8.0)</l>
+<c>**基于自动全局</c>
+<l>rgb1_to_gray(Image,GrayImage)</l>
+<l>binary_threshold(GrayImage,RegionMaxSeparability,'max_separability','dark',UsedThreshold)</l>
+<c></c>
+<c>**局部阈值分割</c>
+<l>rgb1_to_gray(Image,GrayImage)</l>
+<l>mult_image(GrayImage,GrayImage,ImageResult,0.008,0)</l>
+<l>mean_image(ImageResult,ImageMean,50,50)</l>
+<l>dyn_threshold(ImageResult,ImageMean,RegionDynThresh,4,'not_equal')</l>
+<l>opening_circle(RegionDynThresh,RegionOpening,1.5)</l>
+<l>dev_clear_window()</l>
+<l>dev_display(RegionOpening)</l>
+<c></c>
+<c></c>
+<c>**区域生长</c>
+<c></c>
+<l>median_image(Image,ImageMedian,'circle',2,'mirrored')</l>
+<l>regiongrowing(ImageMedian,Regions,1,1,3,500)</l>
+<l>shape_trans(Regions,Centers,'inner_center')</l>
+<l>connection(Centers,SingleCenters)</l>
+<l>area_center(SingleCenters,Area,Row,Column)</l>
+<l>regiongrowing_mean(ImageMedian,RegionsMean,Row,Column,25,100)</l>
+<c></c>
+<c></c>
+<c>**分水岭算法</c>
+<l>rgb1_to_gray(Image,GrayImage)</l>
+<l>gauss_filter(GrayImage,ImageGauss,11)</l>
+<l>watersheds(ImageGauss,Basins1,Watersheds)</l>
+<l>watersheds_threshold(ImageGauss,Basins,50)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

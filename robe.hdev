@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image, 'C:/Users/21069/Desktop/data/data/图片3.jpg')</l>
+<l>rgb1_to_gray(Image, GrayImage)</l>
+<l>sobel_amp(GrayImage, Amp, 'sum_abs', 3)</l>
+<l>threshold(Amp, Edg, 100, 255)</l>
+<l>skeleton(Edg, Skeleton)</l>
+<l>dev_clear_window()</l>
+<l>dev_display(Skeleton)</l>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

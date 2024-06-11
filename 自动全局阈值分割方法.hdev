@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Codes, 'E:/机器视觉/data/codes.jpg')</l>
+<l>rgb1_to_gray(Codes,GrayImage)</l>
+<l>binary_threshold(GrayImage,RegionMaxSeparability,'max_separability','dark',UsedThreshold)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

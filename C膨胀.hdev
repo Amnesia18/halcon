@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (C, 'E:/机器视觉/data/C_dilation.png')</l>
+<l>rgb1_to_gray(C,GrayImage)</l>
+<l>threshold(GrayImage,Region,100,255)</l>
+<l>erosion_circle(Region,RegionErosion,7.5)</l>
+<l>erosion_circle(Region,RegionErosion2,6.5)</l>
+<l>erosion_circle(Region,RegionErosion3,5.5)</l>
+<l>dilation_circle(RegionErosion3,RegionDilation,23.5)</l>
+<l>dev_clear_window()</l>
+<l>dev_display(RegionDilation)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

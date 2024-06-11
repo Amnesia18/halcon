@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image, 'E:/机器视觉/data/holes.jpg')</l>
+<c></c>
+<l>get_image_size(Image,Width,Height)</l>
+<l>dev_open_window(0, 0, Width, Height, 'black', WindowID)</l>
+<l>rgb1_to_gray(Image, GrayImage)</l>
+<l>gen_rectangle1(Rectangle,180,83,371,522)</l>
+<l>reduce_domain(GrayImage, Rectangle, ROI)</l>
+<l>threshold(ROI, Region, 0,80)</l>
+<l>connection(Region, ConnectedRegions)</l>
+<l>count_obj(ConnectedRegions, Num)</l>
+<l>area_center(ConnectedRegions, Area, Row, Column)</l>
+<l>for i :=1 to Num by 1</l>
+<l>    dev_set_color('red')</l>
+<l>    select_obj(ConnectedRegions, ObjectSelected, i)</l>
+<l>    set_tposition(WindowID,Row[i-1]+40,Column[i-1])</l>
+<l>    dev_set_color('blue')</l>
+<l>    write_string(WindowID, Area[i-1])</l>
+<l>endfor</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

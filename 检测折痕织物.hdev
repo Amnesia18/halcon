@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Cloth, 'E:/机器视觉/data/cloth.jpg')</l>
+<c></c>
+<l>decompose3(Cloth,Image1,Image2,Image3)</l>
+<l>trans_from_rgb(Image1,Image2,Image3,ImageResult1,ImageResult2,ImageResult3,'hsv')</l>
+<l>texture_laws(ImageResult2,ImageTextureLS,'ls',2,7)</l>
+<l>mean_image(ImageTextureLS,ImageMean,11,11)</l>
+<l>threshold(ImageMean,Regions,60,255)</l>
+<l>connection(Regions,ConnectedRegions)</l>
+<l>area_center(ConnectedRegions,Area,Row,Column)</l>
+<l>select_shape(ConnectedRegions,SelectedRegions,'area','and',max(Area),99999)</l>
+<l>closing_circle(SelectedRegions,RegionClosing,11.5)</l>
+<l>dev_clear_window()</l>
+<l>dev_display(RegionClosing)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

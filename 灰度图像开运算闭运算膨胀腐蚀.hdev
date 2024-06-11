@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Village, 'E:/机器视觉/data/village.jpg')</l>
+<l>rgb1_to_gray(Village,Image)</l>
+<l>gray_erosion_shape(Image,ImageMin,11,11,'octagon')</l>
+<l>gray_dilation_shape(Image,ImageMax,11,11,'octagon')</l>
+<l>gray_opening_shape(Image,ImageOpening,7,7,'octagon')</l>
+<l>gray_closing_shape(Image,ImageClosing,7,7,'octagon')</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

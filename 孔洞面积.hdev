@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_close_window()</l>
+<l>read_image (Image, 'E:/机器视觉/data/holes2.jpg')</l>
+<c></c>
+<l>dev_open_window_fit_image(Image, 0, 0, -1, -1, WindowHandle)</l>
+<l>rgb1_to_gray(Image, GrayImage)</l>
+<l>threshold(GrayImage, Region, 50, 255)</l>
+<l>area_holes(Region, Area)</l>
+<l>disp_message(WindowHandle,'Size of holes:'+Area+'pixel','window',10,10,'black','true')</l>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

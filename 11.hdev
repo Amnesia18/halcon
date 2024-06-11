@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_close_window()</l>
+<l>read_image (Image_display, 'C:/Users/Amnesia/Desktop/display.jpg')</l>
+<l>rgb1_to_gray (Image_display,GrayImage)</l>
+<l>get_image_size(Image_display,imageWidth,imageHeight)</l>
+<l>dev_open_window(0,0,imageWidth,imageHeight,'black',windowHandle)</l>
+<l>dev_display(GrayImage)</l>
+<l>XCoordCorners :=[]</l>
+<l>YCoordCorners :=[]</l>
+<l>threshold(GrayImage,DarkRegion,0,80)</l>
+<l>connection(DarkRegion,ConnectedRegions)</l>
+<l>select_shape_std(ConnectedRegions,displayRegion,'max_area',70)</l>
+<l>reduce_domain(GrayImage,displayRegion,displayImage)</l>
+<l>gen_contour_region_xld(displayRegion,Contours,'border')</l>
+<l>segment_contours_xld(Contours,ContoursSplit,'lines',5,4,2)</l>
+<l>count_obj(ContoursSplit,Number)</l>
+<l>for index:=1 to Number by 1</l>
+<l>    select_obj(ContoursSplit,ObjectCurrent,index)</l>
+<l>    fit_line_contour_xld(ObjectCurrent,'tukey',-1,0,5,5,RowBegin,ColBegin,RowEnd,ColEnd,Nr,Nc,Dist)</l>
+<l>    tuple_concat(XCoordCorners,RowBegin,XCoordCorners)</l>
+<l>    tuple_concat(YCoordCorners,RowBegin,YCoordCorners)</l>
+<l>endfor</l>
+<l>XOff:=100</l>
+<l>YOff:=100*imageHeight/imageWidth</l>
+<l>hom_vector_to_proj_hom_mat2d(XCoordCorners,YCoordCorners,[1,1,1,1],[YOff,YOff,imageHeight-YOff,imageHeight-YOff], [XOff,imageWidth-XOff,imageWidth-XOff,XOff], [1,1,1,1], 'normalized_dlt', HomMat2D)</l>
+<l>projective_trans_image(Image_display,Image_rectified,HomMat2D,'bilinear','false','false')</l>
+<l>dev_display(Image_rectified)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

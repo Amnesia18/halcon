@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Image, 'C:/Users/21069/Desktop/data/data/图片3.jpg')</l>
+<l>laplace_of_gauss(Image, ImageLaplace, 2)</l>
+<l>zero_crossing(ImageLaplace,ZeroCrossing)</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

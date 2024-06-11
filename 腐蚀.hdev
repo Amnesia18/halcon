@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>read_image (Board, 'E:/机器视觉/data/board.jpg')</l>
+<l>rgb1_to_gray(Board,GrayImage)</l>
+<l>threshold(GrayImage,Region,100,255)</l>
+<l>erosion_circle(Region,RegionErosion,7.5)</l>
+<l>erosion_circle(RegionErosion,RegionErosion2,6.5)</l>
+<l>dev_clear_window()</l>
+<l>dev_display(RegionErosion2)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
